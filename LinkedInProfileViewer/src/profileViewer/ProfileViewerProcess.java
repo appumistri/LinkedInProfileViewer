@@ -91,12 +91,14 @@ public class ProfileViewerProcess implements Runnable {
 
 	public boolean signin(String username, String password) {
 		try {
-			By emailTxt = By.id("login-email");
-			By passwordTxt = By.id("login-password");
-			By signinBtn = By.id("login-submit");
-			By homeIcon = By.id("feed-nav-item");
+			By signinButton = By.xpath("//a[text()='Sign in']");
+			By emailTxt = By.id("username");
+			By passwordTxt = By.id("password");
+			By signinBtn = By.xpath("//button[@type='submit']");
+			By homeIcon = By.id("feed-tab-icon");
 
 			driver.get("https://www.linkedin.com");
+			driver.findElement(signinButton).click();
 			driver.findElement(emailTxt).clear();
 			driver.findElement(emailTxt).sendKeys(username);
 			driver.findElement(passwordTxt).clear();
